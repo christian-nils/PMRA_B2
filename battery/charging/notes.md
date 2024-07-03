@@ -7,3 +7,4 @@ Here is what was done during the capture "battery_ADC_test":
 5. Stop the test by keeping the OK button long
 6. Unplug the charger
 
+Regarding the "battery_without_factory_test" capture, I simply docked the robot and checked the DS/CS lines of the battery. On the screen, it showed "Charging... 52%" at the beginning, at the end of the capture the screen showed "Charging... 56%".
