@@ -6,9 +6,9 @@ The sal captures need to be opened with Saleae's [Logic](https://www.saleae.com/
 
 ## Motor IDs
 
-- left: `0x01`
-- right: `0x10`
-- middle(a.k.a blade): `0x11`
+- left: `0b01` or `0x01`
+- right: `0b10` or `0x02`
+- middle(a.k.a blade): `0b11` or `0x03`
 
 ## Commands
 
