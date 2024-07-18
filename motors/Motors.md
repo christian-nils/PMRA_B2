@@ -6,8 +6,8 @@ The sal captures need to be opened with Saleae's [Logic](https://www.saleae.com/
 
 ## Motor IDs
 
+- right: `0b00` or `0x00`
 - left: `0b01` or `0x01`
-- right: `0b10` or `0x02`
 - middle(a.k.a blade): `0b11` or `0x03`
 
 ## Commands
@@ -16,7 +16,7 @@ The sal captures need to be opened with Saleae's [Logic](https://www.saleae.com/
 
 Buffer format
 
-`header[1] header[0] 00 00 motor_id 00 checksum speed[1] 00 speed[0] 00`
+`header[1] header[0] motor_id 00 command_id 00 checksum speed[1] 00 speed[0] 00`
 
 Example:
 
@@ -24,13 +24,13 @@ Example:
 
 The checksum is calculated as follows:
 
-`checksum = (motor_id + speed[1] + speed[0]) & 0x7F`
+`checksum = (motor_id + command_id + speed[1] + speed[0]) & 0x7F`
 
 ### Motor MCU (right motor)
 
 Buffer format
 
-`header[1] header[0] 00 speed[1] motor_id? speed[0] checksum current[1] 00 current[0] motor_status?`
+`header[1] header[0] motor_id? speed[1] command_id? speed[0] checksum current[1] 00 current[0] motor_status?`
 
 Example:
 
@@ -38,9 +38,9 @@ Example:
 
 The checksum is calculated as follows:
 
-`checksum = (motor_id + speed[1] + speed[0] + motor_status + current[1] + current[0]) & 0x7F`
+`checksum = (motor_id + speed[1] + command_id + speed[0] + motor_status + current[1] + current[0]) & 0x7F`
 
-I am not yet sure about the `motor_id` and the `motor_status`. As the following is reported when no motor is connected:
+I am not yet sure about the `motor_id`, `command_id`, and `motor_status`. As the following is reported when no motor is connected:
 
 `D5 E5 00 00 06 00 1B 00 10 00 05`
 
