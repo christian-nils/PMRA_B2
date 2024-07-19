@@ -16,7 +16,7 @@ The sal captures need to be opened with Saleae's [Logic](https://www.saleae.com/
 
 Buffer format
 
-`header[1] header[0] motor_id 00 command_id 00 checksum speed[1] 00 speed[0] 00`
+`header[1] header[0] motor_id voltage[0] command_id voltage[1] checksum speed[1] 00 speed[0] 00`
 
 Example:
 
@@ -24,7 +24,7 @@ Example:
 
 The checksum is calculated as follows:
 
-`checksum = (motor_id + command_id + speed[1] + speed[0]) & 0x7F`
+`checksum = (motor_id + command_id + speed[1] + speed[0] + voltage[1] + voltage[0]) & 0x7F`
 
 ### Motor MCU (right motor)
 
